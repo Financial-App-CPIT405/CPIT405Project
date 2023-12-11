@@ -3,50 +3,61 @@ import TransactionHistory from "./TransactionHistory";
 import "./BudgetManager.css";
 
 const BudgetManager = () => {
-  const [budget, setBudget] = useState(0);
+  const [balance, setBalance] = useState(0);
   const [expenses, setExpenses] = useState([]);
-  const [newBudget, setNewBudget] = useState(0);
+  const [newBalance, setNewBalance] = useState(0);
   const [expenseAmount, setExpenseAmount] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [transactionHistory, setTransactionHistory] = useState([]);
 
-  const handleSetBudget = () => {
-    setBudget(newBudget);
-    addTransaction("Set Budget", newBudget);
+  const handleSetBalance = () => {
+    setBalance(newBalance);
+    addTransaction("Set Balance", newBalance);
   };
 
   const handleAddExpense = () => {
-    if (expenseAmount <= budget && selectedCategory !== "") {
+    if (expenseAmount <= balance && selectedCategory !== "") {
       setExpenses([...expenses, { amount: expenseAmount, category: selectedCategory }]);
-      setBudget(budget - expenseAmount);
+      setBalance(balance - expenseAmount);
       addTransaction(`Expense - ${selectedCategory}`, expenseAmount);
-      setExpenseAmount(0); 
+      setExpenseAmount(0);
       setSelectedCategory('');
     } else {
-      alert("Please select a category and ensure the expense does not exceed the current budget!");
+      alert("Please select a category and ensure the expense does not exceed the current balance!");
     }
   };
-  
-  
 
-  const addTransaction = (type, amount) => {
-    const newTransaction = { type, amount };
-    setTransactionHistory([...transactionHistory, newTransaction]);
+  const addTransaction = async (type, amount) => {
+   
+      const response = await fetch('http://localhost:3000/BackEnd/api/create.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ type, amount }),
+      });
+
+      if (response.ok) {
+        const newTransaction = { type, amount };
+        setTransactionHistory([...transactionHistory, newTransaction]);
+      } else {
+        console.error('Failed to add transaction');
+      }
   };
 
   return (
     <div>
-      <h2>Budget Manager</h2>
+      <h2>Balance Manager</h2>
       <label>
-        Set Your Budget:
+        Set Your Balance:
         <input
           type="number"
-          value={newBudget}
-          onChange={(e) => setNewBudget(parseInt(e.target.value, 10))}
+          value={newBalance}
+          onChange={(e) => setNewBalance(parseInt(e.target.value, 10))}
         />
       </label>
-      <button onClick={handleSetBudget}>Set Budget</button>
-      <p>Your Budget: {budget} USD</p>
+      <button onClick={handleSetBalance}>Set Balance</button>
+      <p>Your Balance: {balance} USD</p>
 
       <label>
         Add Expense:
