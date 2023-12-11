@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 // Home.js
+=======
+>>>>>>> 569b99e87b5ab9f4c24bc51b6bc6ff0fbe2c4548
 import React from "react";
 import "./home.css";
 
@@ -10,5 +13,9 @@ const Home = () => {
     </div>
   );
 };
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 569b99e87b5ab9f4c24bc51b6bc6ff0fbe2c4548
 export default Home;
