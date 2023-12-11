@@ -1,31 +1,19 @@
-<<<<<<< HEAD
 /* Home.css */
-=======
->>>>>>> 569b99e87b5ab9f4c24bc51b6bc6ff0fbe2c4548
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-<<<<<<< HEAD
-  
-=======
-    
->>>>>>> 569b99e87b5ab9f4c24bc51b6bc6ff0fbe2c4548
-  h1 {
-    font-size: 2em;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  p {
-    font-size: 1.2em;
-    color: #666;
-    line-height: 1.6;
-  }
-<<<<<<< HEAD
-  
-=======
-  
->>>>>>> 569b99e87b5ab9f4c24bc51b6bc6ff0fbe2c4548
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.2em;
+  color: #666;
+  line-height: 1.6;
+}
