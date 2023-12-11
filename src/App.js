@@ -18,7 +18,7 @@ function App() {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/budget">Budget Manager</Link>
+                <Link to="/budget">Balance Manager</Link>
               </li>
               <li>
                 <Link to="/financial-goals">Financial Goals</Link>
